@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 
@@ -9,6 +10,11 @@ public class HomePage {
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+
+    public HomePage() {
     }
 
     public LoginPage clickFormAuthentication() {
@@ -34,6 +40,26 @@ public class HomePage {
     public HorizontalSliderPage clickHorizontalSlider(){
         clickLink("Horizontal Slider");
         return new HorizontalSliderPage(driver);
+    }
+
+    public AlertsPage clickJavaScriptAlert(){
+        clickLink("JavaScript Alerts");
+        return new AlertsPage(driver);
+    }
+
+    public FileUploadPage clickFileUpload(){
+        clickLink("File Upload");
+        return new FileUploadPage(driver);
+    }
+
+    public ContextMenuPage clickContextMenu(){
+        clickLink("Context Menu");
+        return new ContextMenuPage(driver);
+    }
+
+    public WysiwygEditorPage clickWysiwygEditor(){
+        clickLink("WYSIWYG Editor");
+        return new WysiwygEditorPage(driver);
     }
     private void clickLink(String linkText) {
         driver.findElement(By.linkText(linkText)).click();
